@@ -44,7 +44,11 @@ class FormController extends AbstractController
         }
         else if($form->isSubmitted() && !$form->isValid()) {
 
-            return new Response("Hiba! Kérjük töltsd ki az összes mezőt!");
+            //return new Response("Hiba! Kérjük töltsd ki az összes mezőt!");
+            return new Response($twig->render('result.html.twig', [
+                'title' => 'Oops.. Something went wrong.',
+                'result' => 'Please fill all fields correctly!'
+            ]));
 
         }
 
