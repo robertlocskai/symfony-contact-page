@@ -34,7 +34,13 @@ class FormController extends AbstractController
             $entityManager->persist($msg);
             $entityManager->flush();
 
-            return new Response("Köszönjük szépen a kérdésedet. Válaszunkkal hamarosan keresünk a megadott e-mail címen.");
+            //return new Response("Köszönjük szépen a kérdésedet. Válaszunkkal hamarosan keresünk a megadott e-mail címen.");
+            
+            return new Response($twig->render('result.html.twig', [
+                'title' => 'Success!',
+                'result' => 'Your question was successfully sent!'
+            ]));
+        
         }
         else if($form->isSubmitted() && !$form->isValid()) {
 
